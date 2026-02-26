@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git init)"
+      "Bash(git init)",
+      "Bash(git -C /Users/karsten/dev/dotfiles diff)",
+      "Bash(git -C /Users/karsten/dev/dotfiles log --oneline -5)",
+      "Bash(git -C /Users/karsten/dev/dotfiles add gitconfig && git -C /Users/karsten/dev/dotfiles commit -m \"$\\(cat <<'EOF'\nSet git user email to real address\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(chmod +x /Users/karsten/dev/dotfiles/new-project.sh)",
+      "Bash(./new-project.sh test-project)",
+      "Bash(./new-project.sh test-project 2>&1; echo \"exit: $?\")",
+      "Bash(git remote add origin git@github.com:kphutt/dotfiles.git)",
+      "Bash(git add zshrc new-project.sh tmuxinator/dotfiles.yml .claude/settings.local.json)"
     ]
   }
 }

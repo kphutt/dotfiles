@@ -21,13 +21,14 @@ export EDITOR='vim'
 
 # ── Aliases ─────────────────────────────────────
 # Project launchers
-alias start-all="tmuxinator start inbox-shepherd && tmuxinator start identity-lab && tmuxinator start interview-prep && tmuxinator start prompt-lenses && tmuxinator start ai-toolkit && tmuxinator start text-adventure-v2"
+alias start-all="tmuxinator start inbox-shepherd && tmuxinator start identity-lab && tmuxinator start interview-prep && tmuxinator start prompt-lenses && tmuxinator start ai-toolkit && tmuxinator start text-adventure-v2 && tmuxinator start dotfiles"
 alias is="tmuxinator start inbox-shepherd"
 alias il="tmuxinator start identity-lab"
 alias ip="tmuxinator start interview-prep"
 alias pl="tmuxinator start prompt-lenses"
 alias at="tmuxinator start ai-toolkit"
 alias ta="tmuxinator start text-adventure-v2"
+alias df="tmuxinator start dotfiles"
 
 # Quick tmux session switching
 alias ts="tmux switch -t"

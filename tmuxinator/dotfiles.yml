@@ -1,0 +1,11 @@
+name: dotfiles
+root: ~/dev/dotfiles
+
+windows:
+  - dev:
+      layout: even-horizontal
+      panes:
+        - claude:
+            - echo "🚀 Dotfiles — run 'claude' to start"
+        - git:
+            - git status
