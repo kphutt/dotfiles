@@ -9,7 +9,21 @@
       "Bash(./new-project.sh test-project)",
       "Bash(./new-project.sh test-project 2>&1; echo \"exit: $?\")",
       "Bash(git remote add origin git@github.com:kphutt/dotfiles.git)",
-      "Bash(git add zshrc new-project.sh tmuxinator/dotfiles.yml .claude/settings.local.json)"
+      "Bash(git add zshrc new-project.sh tmuxinator/dotfiles.yml .claude/settings.local.json)",
+      "Bash(git commit -m \"$\\(cat <<'EOF'\nAdd new-project script, dotfiles tmuxinator config, and zshrc alias\n\n- Add new-project.sh for scaffolding new projects with tmuxinator configs and zshrc aliases\n- Add tmuxinator/dotfiles.yml for the dotfiles project workspace\n- Update zshrc with dotfiles alias \\(df\\) and include it in start-all\n- Update Claude local settings with recent permissions\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push -u origin main)",
+      "Bash(gh auth refresh -h github.com -s admin:public_key)",
+      "Bash(for repo in ~/dev/*/; do echo \"=== $repo ===\"; git -C \"$repo\" remote -v 2>/dev/null || echo \"  \\(not a git repo\\)\"; echo; done)",
+      "Bash(git -C ~/dev/ai-toolkit remote set-url origin git@github.com:kphutt/ai-toolkit.git)",
+      "Bash(git -C ~/dev/identity-lab remote set-url origin git@github.com:kphutt/identity-lab.git)",
+      "Bash(git -C ~/dev/inbox-shepherd remote set-url origin git@github.com:kphutt/inbox-shepherd.git)",
+      "Bash(git -C ~/dev/interview-prep remote set-url origin git@github.com:kphutt/interview-prep.git)",
+      "Bash(git -C ~/dev/prompt-lenses remote set-url origin git@github.com:kphutt/prompt-lenses.git)",
+      "Bash(git -C ~/dev/text-adventure-v2 remote set-url origin git@github.com:kphutt/text-adventure-v2.git)",
+      "Bash(git -C ~/dev/dotfiles diff .claude/settings.local.json)",
+      "Bash(git -C ~/dev/inbox-shepherd diff src/appsscript.json)",
+      "Bash(git -C ~/dev/inbox-shepherd checkout -- src/appsscript.json)",
+      "Bash(git -C ~/dev/dotfiles add .claude/settings.local.json && git -C ~/dev/dotfiles commit -m \"$\\(cat <<'EOF'\nUpdate Claude local settings with session permissions\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
