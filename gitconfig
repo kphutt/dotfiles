@@ -1,0 +1,37 @@
+[user]
+    name = Karsten
+    email = your-email@example.com
+
+[core]
+    pager = delta
+    editor = vim
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    side-by-side = true
+    line-numbers = true
+    syntax-theme = Dracula
+    plus-style = "syntax #2a4a2a"
+    minus-style = "syntax #4a2a2a"
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = true
+
+[alias]
+    last = log --oneline -10
+    review = diff --cached
+    unstage = reset HEAD --
+    amend = commit --amend --no-edit
+    wip = !git add -A && git commit -m "wip"

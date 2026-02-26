@@ -1,0 +1,11 @@
+name: ai-toolkit
+root: ~/dev/ai-toolkit
+
+windows:
+  - dev:
+      layout: even-horizontal
+      panes:
+        - claude:
+            - echo "🤖 AI Toolkit — run 'claude' to start"
+        - git:
+            - git status

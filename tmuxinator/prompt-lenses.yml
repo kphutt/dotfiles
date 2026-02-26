@@ -1,0 +1,11 @@
+name: prompt-lenses
+root: ~/dev/prompt-lenses
+
+windows:
+  - dev:
+      layout: even-horizontal
+      panes:
+        - claude:
+            - echo "🔍 Prompt Lenses — run 'claude' to start"
+        - git:
+            - git status

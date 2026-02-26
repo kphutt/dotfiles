@@ -1,0 +1,11 @@
+name: text-adventure-v2
+root: ~/dev/text-adventure-v2
+
+windows:
+  - dev:
+      layout: even-horizontal
+      panes:
+        - claude:
+            - echo "🎮 Text Adventure v2 — run 'claude' to start"
+        - git:
+            - git status

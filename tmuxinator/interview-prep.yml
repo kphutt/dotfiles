@@ -1,0 +1,11 @@
+name: interview-prep
+root: ~/dev/interview-prep
+
+windows:
+  - dev:
+      layout: even-horizontal
+      panes:
+        - claude:
+            - echo "📚 Interview Prep — run 'claude' to start"
+        - git:
+            - git status
