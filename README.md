@@ -12,7 +12,7 @@ My terminal dev environment. iTerm2 + zsh + tmux + delta.
 ## Setup on a new machine
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
+git clone https://github.com/kphutt/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 chmod +x install.sh
 ./install.sh
@@ -34,6 +34,7 @@ ip    # interview-prep
 pl    # prompt-lenses
 at    # ai-toolkit
 ta    # text-adventure-v2
+df    # dotfiles (shadows Unix df)
 
 # Switch between sessions
 Ctrl+A then s     # session picker
@@ -49,22 +50,12 @@ gd                # git diff (with delta)
 git add -p        # interactive staging
 ```
 
-## Adding a new project
+## Scaffolding a new project
 
-Create `tmuxinator/my-project.yml`:
-
-```yaml
-name: my-project
-root: ~/dev/my-project
-
-windows:
-  - dev:
-      layout: even-horizontal
-      panes:
-        - claude:
-            - echo "my-project — run 'claude' to start"
-        - git:
-            - git status
+```bash
+./new-project.sh my-cool-app       # alias auto-generated: mca
+./new-project.sh my-cool-app mca   # or specify the alias
+source ~/.zshrc
 ```
 
-Add an alias to `zshrc` if you want a shortcut.
+This creates a tmuxinator config, adds a launcher alias to zshrc, and updates `start-all`.
