@@ -42,3 +42,4 @@ alias glast="git log --oneline -10"
 # ── Path ────────────────────────────────────────
 # Add any custom paths here
 # export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
