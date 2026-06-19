@@ -8,6 +8,9 @@ My terminal dev environment. iTerm2 + zsh + tmux + delta.
 - **tmux.conf** — Ctrl+A prefix, mouse support, session persistence via resurrect/continuum
 - **gitconfig** — delta for side-by-side diffs, useful aliases
 - **tmuxinator/** — named project sessions with claude + git panes
+- **repo-health-bootstrap.sh** — *inert until you source it.* Optional L0 self-heal: on a fresh
+  machine, first-runs ai-toolkit `setup.py --apply` once — but only if unconfigured AND on a verified
+  tag (supply-chain guard). Activate deliberately (see the file header); not wired into `zshrc` by default.
 
 ## Setup on a new machine
 
