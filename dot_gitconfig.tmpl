@@ -1,4 +1,4 @@
-# Managed by chezmoi — source: ~/.local/share/chezmoi/dot_gitconfig.tmpl
+# Managed by chezmoi - source: ~/.local/share/chezmoi/dot_gitconfig.tmpl
 # Shared, cross-machine git config. Identity + machine-specific paths (e.g.
 # core.hooksPath) live in ~/.gitconfig.local (untracked, per-machine) via the
 # [include] at the bottom.
@@ -42,6 +42,6 @@
     amend = commit --amend --no-edit
     wip = !git add -A && git commit -m "wip"
 
-# Identity + machine-specific overrides — untracked, created per-machine.
+# Identity + machine-specific overrides - untracked, created per-machine.
 [include]
-    path = ~/.gitconfig.local
+    path = {{ .chezmoi.homeDir }}/.gitconfig.local

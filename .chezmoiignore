@@ -13,5 +13,5 @@ new-project.sh
 
 # The PowerShell profile is Windows-only.
 {{ if ne .chezmoi.os "windows" }}
-Documents/PowerShell/Microsoft.PowerShell_profile.ps1
+Documents
 {{ end }}
