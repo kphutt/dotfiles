@@ -1,10 +1,16 @@
-[user]
-    name = Karsten
-    email = karsten.huttelmaier@gmail.com
+# Managed by chezmoi — source: ~/.local/share/chezmoi/dot_gitconfig.tmpl
+# Shared, cross-machine git config. Identity + machine-specific paths (e.g.
+# core.hooksPath) live in ~/.gitconfig.local (untracked, per-machine) via the
+# [include] at the bottom.
 
 [core]
     pager = delta
+{{- if eq .chezmoi.os "windows" }}
+    editor = code --wait
+    autocrlf = false
+{{- else }}
     editor = vim
+{{- end }}
 
 [interactive]
     diffFilter = delta --color-only
@@ -35,3 +41,7 @@
     unstage = reset HEAD --
     amend = commit --amend --no-edit
     wip = !git add -A && git commit -m "wip"
+
+# Identity + machine-specific overrides — untracked, created per-machine.
+[include]
+    path = ~/.gitconfig.local

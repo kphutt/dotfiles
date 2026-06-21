@@ -1,0 +1,21 @@
+{{- if eq .chezmoi.os "windows" -}}
+# Install the core CLI toolkit on Windows via winget.
+# Idempotent: winget no-ops if a package is already installed. run_once: chezmoi
+# runs this just once (and again only if this script's content changes).
+
+$tools = @(
+    'Starship.Starship',
+    'ajeetdsouza.zoxide',
+    'junegunn.fzf',
+    'BurntSushi.ripgrep.MSVC',
+    'sharkdp.fd'
+)
+foreach ($id in $tools) {
+    winget install --id $id --source winget --accept-source-agreements --accept-package-agreements
+}
+
+# PSFzf gives PowerShell the Ctrl-R / Ctrl-T fzf bindings (the zsh fzf equivalent).
+if (-not (Get-Module -ListAvailable -Name PSFzf)) {
+    Install-Module PSFzf -Scope CurrentUser -Force
+}
+{{- end -}}

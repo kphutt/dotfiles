@@ -1,0 +1,7 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+# Install the core CLI toolkit on macOS via Homebrew.
+# Idempotent: brew no-ops if a formula is already installed. run_once: chezmoi
+# runs this just once (and again only if this script's content changes).
+brew install starship zoxide fzf ripgrep fd
+{{- end -}}

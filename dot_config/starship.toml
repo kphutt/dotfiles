@@ -1,0 +1,42 @@
+# starship.toml — shared prompt config for BOTH machines (Mac zsh + Windows PowerShell).
+# Rendered by chezmoi to ~/.config/starship.toml; starship reads that path on both OSes.
+# Full reference: https://starship.rs/config/
+#
+# Symbols here are plain Unicode (no Nerd Font required) so the prompt renders
+# correctly out of the box. Install a Nerd Font later to unlock nicer glyphs.
+
+# Blank line before each prompt — makes scrollback easier to scan.
+add_newline = true
+
+# Max time (ms) starship waits on a slow command (e.g. git in a huge repo)
+# before skipping that module. Keeps the prompt snappy, esp. on PowerShell.
+command_timeout = 1000
+
+# The prompt symbol: green on success, red after a failed command.
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+# Current directory — show at most the last 3 path segments, relative to a repo root.
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold cyan"
+
+# Git branch name.
+[git_branch]
+symbol = ""                       # plain; set a Nerd Font glyph here once a NF is installed
+format = "[$branch]($style) "
+style = "bold purple"
+
+# Git working-tree state: ahead/behind origin, dirty markers, etc.
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+style = "bold red"
+
+# How long the last command took — only shown when it was actually slow (>2s).
+[cmd_duration]
+min_time = 2000
+format = "took [$duration](bold yellow) "
