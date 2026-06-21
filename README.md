@@ -32,7 +32,6 @@ is    # inbox-shepherd
 il    # identity-lab
 ip    # interview-prep
 pl    # prompt-lenses
-at    # ai-toolkit
 ta    # text-adventure-v2
 df    # dotfiles (shadows Unix df)
 
