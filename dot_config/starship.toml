@@ -2,8 +2,8 @@
 # Rendered by chezmoi to ~/.config/starship.toml; starship reads that path on both OSes.
 # Full reference: https://starship.rs/config/
 #
-# Symbols here are plain Unicode (no Nerd Font required) so the prompt renders
-# correctly out of the box. Install a Nerd Font later to unlock nicer glyphs.
+# Uses Nerd Font glyphs (JetBrainsMono Nerd Font is installed by the run_once
+# installer). Set your terminal font to a Nerd Font or icons render as boxes (tofu).
 
 # Blank line before each prompt — makes scrollback easier to scan.
 add_newline = true
@@ -25,8 +25,8 @@ style = "bold cyan"
 
 # Git branch name.
 [git_branch]
-symbol = ""                       # plain; set a Nerd Font glyph here once a NF is installed
-format = "[$branch]($style) "
+symbol = " "                      # Nerd Font branch glyph (renders once a NF is the terminal font)
+format = "[$symbol$branch]($style) "
 style = "bold purple"
 
 # Git working-tree state: ahead/behind origin, dirty markers, etc.
