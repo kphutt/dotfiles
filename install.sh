@@ -14,8 +14,10 @@ else
 fi
 
 # ── Brew packages ───────────────────────────────
+# tmux + delta = multiplexer + nicer diffs; zoxide/fzf/ripgrep/fd = the fast inner loop
+# (smart cd, fuzzy find, fast search — ripgrep is also what Claude Code searches with).
 echo "🍺 Installing brew packages..."
-brew install tmux git-delta tmuxinator 2>/dev/null || true
+brew install tmux git-delta zoxide fzf ripgrep fd 2>/dev/null || true
 brew install --cask iterm2 2>/dev/null || true
 
 # ── Oh My Zsh ──────────────────────────────────
@@ -57,7 +59,6 @@ echo "🔗 Creating symlinks..."
 ln -sf "$DOTFILES_DIR/zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES_DIR/gitconfig" "$HOME/.gitconfig"
-ln -sf "$DOTFILES_DIR/tmuxinator" "$HOME/.tmuxinator"
 
 # ── Verify ──────────────────────────────────────
 echo ""
@@ -65,12 +66,10 @@ echo "✅ Done! Installed:"
 echo "   zshrc     → ~/.zshrc"
 echo "   tmux.conf → ~/.tmux.conf"
 echo "   gitconfig → ~/.gitconfig"
-echo "   tmuxinator configs → ~/.tmuxinator/"
 echo ""
 echo "Next steps:"
 echo "  1. Run: source ~/.zshrc"
 echo "  2. Open tmux and press Ctrl+A then I to install tmux plugins"
-echo "  3. Update your email in ~/.gitconfig (or edit dotfiles/gitconfig)"
+echo "  3. Set your git identity: git config --global user.email you@example.com"
 echo ""
-echo "To start a project: tmuxinator start inbox-shepherd"
-echo "To start all:       start-all"
+echo "Navigate: cd into a repo once, then 'z <name>' jumps back to it; 'zi' to fuzzy-pick."
