@@ -1,0 +1,13 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+# Install the core CLI toolkit on macOS via Homebrew.
+# Idempotent: brew no-ops if a formula is already installed. run_once: chezmoi
+# runs this just once (and again only if this script's content changes).
+brew install starship zoxide fzf ripgrep fd
+brew install --cask font-jetbrains-mono-nerd-font   # modern brew: no cask-fonts tap needed
+
+# oh-my-zsh custom plugins referenced by dot_zshrc (idempotent; assumes omz is installed).
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions" 2>/dev/null || true
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" 2>/dev/null || true
+{{- end -}}

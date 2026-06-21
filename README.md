@@ -1,24 +1,27 @@
 # dotfiles
 
-My terminal dev environment. iTerm2 + zsh + tmux + delta.
+My cross-platform terminal dev environment, managed with [chezmoi](https://chezmoi.io): one source
+renders **zsh** (macOS) and **PowerShell** (Windows) from shared templates, with a byte-identical
+**starship** prompt on both.
 
 ## What's included
 
-- **zshrc** — oh-my-zsh + **zoxide** (smart `cd`) + **fzf** (fuzzy find); autosuggestions, syntax highlighting
-- **tmux.conf** — Ctrl+A prefix, mouse support, session persistence via resurrect/continuum
-- **gitconfig** — delta for side-by-side diffs, useful aliases
+- **starship** — shared prompt (`dot_config/starship.toml`), identical on macOS + Windows
+- **zsh** (`dot_zshrc`, macOS) / **PowerShell profile** (Windows) — zoxide (smart `cd`), fzf (fuzzy find), history predictions, syntax highlighting
+- **gitconfig** (`dot_gitconfig.tmpl`) — delta diffs + aliases; identity lives in an untracked `~/.gitconfig.local` (kept out of this public repo)
+- **tmux.conf** (macOS) — Ctrl+A prefix, mouse, session persistence
+- **`run_once` installers** — winget (Windows) / brew (macOS) install starship, zoxide, fzf, ripgrep, fd, and a Nerd Font
 
 ## Setup on a new machine
 
 ```bash
-git clone https://github.com/kphutt/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-chmod +x install.sh
-./install.sh
-source ~/.zshrc
+# install chezmoi — macOS: brew install chezmoi · Windows: winget install twpayne.chezmoi
+chezmoi init --apply kphutt
 ```
 
-Then open tmux and press `Ctrl+A` then `I` to install tmux plugins.
+This clones the source, installs the toolkit, and writes your shell config. Then create
+`~/.gitconfig.local` with your git identity (name/email). On macOS, open tmux and press `Ctrl+A` then
+`I` to install tmux plugins.
 
 ## Daily usage
 

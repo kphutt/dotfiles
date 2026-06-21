@@ -1,0 +1,17 @@
+# Repo-meta files — live in the repo, never deployed to $HOME.
+# (Files starting with "." — .git, .gitignore, .gitattributes — are auto-ignored by chezmoi.)
+README.md
+install.sh
+new-project.sh
+
+# OS-scoped targets: zsh + tmux config are macOS-only here.
+# .chezmoiignore is itself a template; these patterns match TARGET paths (~/.zshrc, etc.).
+{{ if ne .chezmoi.os "darwin" }}
+.zshrc
+.tmux.conf
+{{ end }}
+
+# The PowerShell profile is Windows-only.
+{{ if ne .chezmoi.os "windows" }}
+Documents/PowerShell/Microsoft.PowerShell_profile.ps1
+{{ end }}
