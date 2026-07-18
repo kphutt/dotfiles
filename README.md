@@ -8,9 +8,9 @@ renders **zsh** (macOS) and **PowerShell** (Windows) from shared templates, with
 
 - **starship** — shared prompt (`dot_config/starship.toml`), identical on macOS + Windows
 - **zsh** (`dot_zshrc`, macOS) / **PowerShell profile** (Windows) — zoxide (smart `cd`), fzf (fuzzy find), history predictions, syntax highlighting
-- **gitconfig** (`dot_gitconfig.tmpl`) — delta diffs + aliases; identity lives in an untracked `~/.gitconfig.local` (kept out of this public repo)
-- **tmux.conf** (macOS) — Ctrl+A prefix, mouse, session persistence
-- **`run_once` installers** — winget (Windows) / brew (macOS) install starship, zoxide, fzf, ripgrep, fd, and a Nerd Font
+- **gitconfig** (`dot_gitconfig.tmpl`) — delta diffs + aliases; identity lives in an untracked `~/.gitconfig.local` (kept out of this public repo), written by a `run_once` script from values prompted once at `chezmoi init`
+- **tmux.conf** (macOS) — Ctrl+A prefix, mouse, session persistence; TPM + plugins install themselves
+- **`run_once` installers** — winget (Windows) / brew (macOS) install starship, zoxide, fzf, ripgrep, fd, delta, tmux (macOS), a Nerd Font, oh-my-zsh (macOS), and tmux plugins (macOS)
 
 ## Setup on a new machine
 
@@ -19,9 +19,10 @@ renders **zsh** (macOS) and **PowerShell** (Windows) from shared templates, with
 chezmoi init --apply kphutt
 ```
 
-This clones the source, installs the toolkit, and writes your shell config. Then create
-`~/.gitconfig.local` with your git identity (name/email). On macOS, open tmux and press `Ctrl+A` then
-`I` to install tmux plugins.
+This clones the source, prompts once for your git identity (name/email — written to the untracked
+`~/.gitconfig.local`), installs the toolkit (including oh-my-zsh and tmux plugins on macOS), and
+writes your shell config. The only remaining manual step: set your terminal's font to the installed
+Nerd Font.
 
 ## Daily usage
 

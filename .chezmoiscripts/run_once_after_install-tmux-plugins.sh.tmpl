@@ -1,0 +1,16 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+# Install TPM and the plugins ~/.tmux.conf declares (resurrect, continuum) —
+# replaces the manual "prefix + I" step. run_once_after: install_plugins parses
+# ~/.tmux.conf, so it must run after chezmoi has written it. Idempotent: the
+# clone is skipped when TPM is present, and install_plugins no-ops on plugins
+# that are already installed.
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+if [ ! -d "$TPM_DIR" ]; then
+  git clone --depth=1 https://github.com/tmux-plugins/tpm "$TPM_DIR"
+fi
+# Non-interactive plugin install; needs tmux on PATH (installed by run_once_install-tools).
+if command -v tmux >/dev/null; then
+  "$TPM_DIR/bin/install_plugins" || true
+fi
+{{- end -}}

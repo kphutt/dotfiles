@@ -1,0 +1,15 @@
+{{- if eq .chezmoi.os "darwin" -}}
+{{- if hasKey . "git" -}}
+#!/bin/sh
+# Write the git identity into ~/.gitconfig.local (machine-local, untracked — the
+# [include] target of the managed ~/.gitconfig). Values come from chezmoi's config
+# data (.chezmoi.toml.tmpl prompts once at `chezmoi init`). `git config --file`
+# sets ONLY these two keys, so any other hand-authored entries in
+# ~/.gitconfig.local are left untouched. run_once_after: runs after ~/.gitconfig
+# is in place; re-runs only if the rendered content (i.e. the identity) changes.
+# The hasKey guard renders this empty (= skipped) until `chezmoi init` has
+# regenerated the config with the [data.git] section.
+git config --file "$HOME/.gitconfig.local" user.name {{ .git.name | quote }}
+git config --file "$HOME/.gitconfig.local" user.email {{ .git.email | quote }}
+{{- end -}}
+{{- end -}}
