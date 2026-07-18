@@ -1,0 +1,10 @@
+{{- /* chezmoi config template — rendered to ~/.config/chezmoi/chezmoi.toml by `chezmoi init`.
+Captures the machine's git identity once: promptStringOnce asks on the first init and re-reads
+the saved answer from the existing config on later re-inits. The rendered config lives outside
+this source repo, so the identity never lands in the (public) dotfiles repo. */ -}}
+{{- $gitName := promptStringOnce . "git.name" "Git author name (user.name)" -}}
+{{- $gitEmail := promptStringOnce . "git.email" "Git author email (user.email)" -}}
+
+[data.git]
+    name = {{ $gitName | quote }}
+    email = {{ $gitEmail | quote }}

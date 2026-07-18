@@ -1,0 +1,13 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+# Install oh-my-zsh non-interactively if absent. dot_zshrc sources it and
+# run_once_install-tools clones plugins into $ZSH_CUSTOM, so omz must exist
+# first (run_once_before: runs before dotfiles are applied and before the plain
+# run_once installers). Idempotent: skipped when ~/.oh-my-zsh already exists.
+# RUNZSH/CHSH/KEEP_ZSHRC stop the installer from launching zsh, switching the
+# login shell, or touching ~/.zshrc (chezmoi owns that file).
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+{{- end -}}
