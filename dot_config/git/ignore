@@ -1,0 +1,6 @@
+# Claude Code — personal/per-machine overrides and the machine-local session/
+# memory store. Claude reads memory from ~/.claude, never from inside a repo;
+# a copy showing up under a repo's own .claude/ is a stray write, not real state.
+**/.claude/settings.local.json
+**/.claude/projects/
+**/.claude/worktrees/
