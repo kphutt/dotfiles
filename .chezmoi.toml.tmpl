@@ -3,7 +3,18 @@ Captures the machine's git identity once: promptStringOnce asks on the first ini
 the saved answer from the existing config on later re-inits. The rendered config lives outside
 this source repo, so the identity never lands in the (public) dotfiles repo. */ -}}
 {{- $gitName := promptStringOnce . "git.name" "Git author name (user.name)" -}}
-{{- $gitEmail := promptStringOnce . "git.email" "Git author email (user.email)" -}}
+{{- /* The email must be the GitHub noreply address. GitHub rejects pushes whose commits expose a
+private email, so a wrong answer here makes a broken machine. A saved answer is kept only if it is
+already a noreply address; otherwise (missing, or a wrong one saved earlier) ask again. The check
+trims spaces and ignores case, and fails closed with a plain message. */ -}}
+{{- $noreply := "(?i)^[^@\\s]+@users\\.noreply\\.github\\.com$" -}}
+{{- $gitEmail := dig "git" "email" "" . | toString | trim -}}
+{{- if not (regexMatch $noreply $gitEmail) -}}
+{{-   $gitEmail = promptString "Git author email (user.email) - use your GitHub noreply address from github.com/settings/emails, like 12345+octocat@users.noreply.github.com" | trim -}}
+{{- end -}}
+{{- if not (regexMatch $noreply $gitEmail) -}}
+{{-   fail (printf "git.email %q is not a GitHub noreply address. GitHub rejects pushes that expose a private email. Enter the address from github.com/settings/emails (Keep my email addresses private), shaped like 12345+octocat@users.noreply.github.com, then run chezmoi init again." $gitEmail) -}}
+{{- end -}}
 
 [data.git]
     name = {{ $gitName | quote }}
