@@ -1,6 +1,7 @@
 # Repo-meta files — live in the repo, never deployed to $HOME.
 # (Files starting with "." — .git, .gitignore, .gitattributes — are auto-ignored by chezmoi.)
 README.md
+CLAUDE.md
 install.sh
 new-project.sh
 
